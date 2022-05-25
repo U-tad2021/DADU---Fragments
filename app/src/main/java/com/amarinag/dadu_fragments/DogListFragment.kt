@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 
 class DogListFragment : Fragment() {
     override fun onCreateView(
@@ -21,10 +22,18 @@ class DogListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val clickMe: TextView = view.findViewById(R.id.tv_dog_list)
 
-        clickMe.setOnClickListener { navigateToDetail("8724da83d9b14db8b027b33f6de75c8e") }
+        clickMe.setOnClickListener { navigateToDetailNavController("8724da83d9b14db8b027b33f6de75c8e") }
     }
 
+    // With Navigation Component
+    private fun navigateToDetailNavController(dogId: String) {
+        val navController = findNavController()
+        val args = Bundle()
+        args.putString("dogId", dogId)
+        navController.navigate(R.id.action_dogListFragment_to_dogDetailFragment, args)
+    }
 
+    // Without Navigation Component
     private fun navigateToDetail(dogId: String) {
         val fragmentManager: FragmentManager = parentFragmentManager
         val fragment = DogDetailFragment()
