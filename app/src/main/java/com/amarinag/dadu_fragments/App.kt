@@ -1,5 +1,7 @@
 package com.amarinag.dadu_fragments
 
+import android.os.Bundle
+
 val dogs: List<Dog> = listOf(
     Dog(
         "f9fc0564913c4230a976361faa321cd7",
@@ -30,3 +32,26 @@ val dogs: List<Dog> = listOf(
         "https://thumbs.dreamstime.com/z/perro-bailar%C3%ADn-gracioso-haciendo-trucos-peque%C3%B1o-bailando-activo-fondo-blanco-mascota-divertida-161672443.jpg"
     ),
 )
+
+
+/*
+companion object {
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment DogDetailFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    @JvmStatic
+    fun newInstance(param1: String, param2: String) =
+        DogDetailFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_PARAM1, param1)
+                putString(ARG_PARAM2, param2)
+            }
+        }
+}
+*/
