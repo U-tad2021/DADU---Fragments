@@ -25,12 +25,11 @@ class DogListFragment : Fragment() {
         clickMe.setOnClickListener { navigateToDetailNavController("8724da83d9b14db8b027b33f6de75c8e") }
     }
 
-    // With Navigation Component
+    // With Navigation Component + safeargs
     private fun navigateToDetailNavController(dogId: String) {
         val navController = findNavController()
-        val args = Bundle()
-        args.putString("dogId", dogId)
-        navController.navigate(R.id.action_dogListFragment_to_dogDetailFragment, args)
+        val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dogId)
+        navController.navigate(action)
     }
 
     // Without Navigation Component
