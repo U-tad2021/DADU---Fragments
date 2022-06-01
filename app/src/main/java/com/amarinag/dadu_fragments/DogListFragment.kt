@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -22,13 +21,8 @@ class DogListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val clickMe: TextView = view.findViewById(R.id.tv_dog_list)
-        val btnClickMe: Button = view.findViewById(R.id.btn_click_me)
-        clickMe.setOnClickListener { navigateToDetailNavController("8724da83d9b14db8b027b33f6de75c8e") }
 
-        btnClickMe.setOnClickListener {
-            val action = DogListFragmentDirections.actionDogListFragmentToUserListFragment()
-            findNavController().navigate(action)
-        }
+        clickMe.setOnClickListener { navigateToDetailNavController("8724da83d9b14db8b027b33f6de75c8e") }
 
     }
 
