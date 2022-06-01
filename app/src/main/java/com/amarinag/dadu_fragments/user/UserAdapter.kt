@@ -21,7 +21,7 @@ class UserAdapter : ListAdapter<User, UserAdapter.ViewHolder>(UserDiffUtilCallba
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = getItem(position)
-        holder.tvUsername.text = user.username
+        holder.tvUsername.text = user.login
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

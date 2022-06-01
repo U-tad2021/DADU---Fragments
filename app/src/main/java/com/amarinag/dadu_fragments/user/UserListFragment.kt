@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amarinag.dadu_fragments.R
+import com.amarinag.dadu_fragments.network.GithubService
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class UserListFragment : Fragment() {
     private val adapter: UserAdapter = UserAdapter()
@@ -24,13 +27,14 @@ class UserListFragment : Fragment() {
         rvUsers.layoutManager = LinearLayoutManager(context)
         rvUsers.adapter = adapter
 
-        val user = listOf<User>(
-            User("1", "Carlos", "imageUrl"),
-            User("2", "Marta", "imageUrl"),
-            User("3", "Juan", "imageUrl"),
-            User("4", "Pedro", "imageUrl"),
-        )
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-        adapter.submitList(user)
+        val githubService: GithubService = retrofit.create(GithubService::class.java)
+
+
+
     }
 }
