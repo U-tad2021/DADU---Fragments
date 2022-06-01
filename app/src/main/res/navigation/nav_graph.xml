@@ -23,4 +23,9 @@
             android:name="dogId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.amarinag.dadu_fragments.user.UserListFragment"
+        android:label="fragment_user_list"
+        tools:layout="@layout/fragment_user_list" />
 </navigation>
