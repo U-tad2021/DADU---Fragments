@@ -21,6 +21,5 @@ class UserListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val rvUsers: RecyclerView = view.findViewById(R.id.rv_users)
 
-        rvUsers.layoutManager = LinearLayoutManager(context)
     }
 }
