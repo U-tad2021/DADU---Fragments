@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amarinag.dadu_fragments.R
 import com.amarinag.dadu_fragments.network.GithubService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -34,7 +37,18 @@ class UserListFragment : Fragment() {
 
         val githubService: GithubService = retrofit.create(GithubService::class.java)
 
+        githubService.getUsers().enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful) {
+                    adapter.submitList(response.body())
+                } else {
 
+                }
+            }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+            }
+        })
 
     }
 }
