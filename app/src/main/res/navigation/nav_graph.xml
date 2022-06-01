@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dogListFragment_to_dogDetailFragment"
             app:destination="@id/dogDetailFragment" />
+        <action
+            android:id="@+id/action_dogListFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
     </fragment>
     <fragment
         android:id="@+id/dogDetailFragment"
