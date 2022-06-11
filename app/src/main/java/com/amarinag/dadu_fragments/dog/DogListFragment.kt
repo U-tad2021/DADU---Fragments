@@ -4,46 +4,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
-import com.amarinag.dadu_fragments.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.amarinag.dadu_fragments.databinding.FragmentDogListBinding
 
 class DogListFragment : Fragment() {
+    private var _binding: FragmentDogListBinding? = null
+    private val binding
+        get() = _binding!!
+
+    private val adapter = DogAdapter()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dog_list, container, false)
+        _binding = FragmentDogListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val clickMe: TextView = view.findViewById(R.id.tv_dog_list)
+        binding.rvAnimals.adapter = adapter
+        binding.rvAnimals.layoutManager = LinearLayoutManager(context)
+    }
 
-        clickMe.setOnClickListener { navigateToDetailNavController("8724da83d9b14db8b027b33f6de75c8e") }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     // With Navigation Component + safeargs
-    private fun navigateToDetailNavController(dogId: String) {
+    private fun navigateToDetailNavController(animalId: String) {
         val navController = findNavController()
-        val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dogId)
+        val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(animalId)
         navController.navigate(action)
-    }
-
-    // Without Navigation Component
-    private fun navigateToDetail(dogId: String) {
-        val fragmentManager: FragmentManager = parentFragmentManager
-        val fragment = DogDetailFragment()
-        val args = Bundle()
-        args.putString("dogId", dogId)
-        fragment.arguments = args
-        fragmentManager.beginTransaction()
-            .replace(R.id.container, fragment)
-            .addToBackStack("dog")
-            .commit()
     }
 }
