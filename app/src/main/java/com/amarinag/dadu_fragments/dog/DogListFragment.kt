@@ -1,4 +1,4 @@
-package com.amarinag.dadu_fragments
+package com.amarinag.dadu_fragments.dog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
+import com.amarinag.dadu_fragments.R
 
 class DogListFragment : Fragment() {
     override fun onCreateView(

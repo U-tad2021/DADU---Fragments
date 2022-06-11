@@ -1,4 +1,4 @@
-package com.amarinag.dadu_fragments
+package com.amarinag.dadu_fragments.dog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.amarinag.dadu_fragments.R
 
 class DogDetailFragment : Fragment() {
     private val args: DogDetailFragmentArgs by navArgs()

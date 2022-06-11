@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/fragment_dog_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_user_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_user_list.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/item_dog.xml" value="0.36302083333333335" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.26927083333333335" />
       </map>
