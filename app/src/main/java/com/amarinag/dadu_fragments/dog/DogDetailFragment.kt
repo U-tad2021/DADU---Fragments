@@ -8,7 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.amarinag.dadu_fragments.databinding.FragmentDogDetailBinding
+import com.amarinag.dadu_fragments.network.DogService
+import com.amarinag.dadu_fragments.network.RemoteDog
+import com.amarinag.dadu_fragments.network.toDomain
 import com.google.android.material.snackbar.Snackbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class DogDetailFragment : Fragment() {
     private var _binding: FragmentDogDetailBinding? = null
@@ -31,6 +39,32 @@ class DogDetailFragment : Fragment() {
 
     private fun doRequest(animalId: String) {
         // TODO: Make internet call here
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://serveranimalutad-env.eba-zr9dsz3t.eu-west-3.elasticbeanstalk.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val dogService: DogService = retrofit.create(DogService::class.java)
+
+        dogService.getAnimalById(animalId).enqueue(object : Callback<RemoteDog> {
+            override fun onResponse(
+                call: Call<RemoteDog>,
+                response: Response<RemoteDog>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.toDomain()?.let {
+                        populateData(it)
+                    } ?: showError("Parse error")
+                } else {
+                    showError("Error Response")
+                }
+            }
+
+            override fun onFailure(call: Call<RemoteDog>, t: Throwable) {
+                showError(t.localizedMessage)
+            }
+
+        })
     }
 
     private fun populateData(dog: Dog) {
