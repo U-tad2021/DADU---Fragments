@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.amarinag.dadu_fragments.R
+import coil.load
 import com.amarinag.dadu_fragments.databinding.FragmentDogDetailBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DogDetailFragment : Fragment() {
     private var _binding: FragmentDogDetailBinding? = null
@@ -26,11 +26,23 @@ class DogDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tvDogDetail: TextView = view.findViewById(R.id.tv_dog_detail)
-        tvDogDetail.text = args.dogId
-
+        doRequest(args.dogId)
     }
 
+    private fun doRequest(animalId: String) {
+        // TODO: Make internet call here
+    }
+
+    private fun populateData(dog: Dog) {
+        binding.tvAnimalName.text = dog.name
+        binding.tvAnimalBreed.text = dog.breedName
+        binding.tvAnimalAge.text = dog.age.toString()
+        binding.ivAnimalAvatar.load(dog.imageUrl)
+    }
+
+    private fun showError(message: String) {
+        Snackbar.make(binding.tvAnimalName, message, Snackbar.LENGTH_LONG).show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

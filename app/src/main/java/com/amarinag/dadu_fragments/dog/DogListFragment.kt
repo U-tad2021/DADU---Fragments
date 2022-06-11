@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amarinag.dadu_fragments.databinding.FragmentDogListBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DogListFragment : Fragment() {
     private var _binding: FragmentDogListBinding? = null
@@ -31,6 +32,19 @@ class DogListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvAnimals.adapter = adapter
         binding.rvAnimals.layoutManager = LinearLayoutManager(context)
+    }
+
+
+    private fun doRequest(animalId: String) {
+        // TODO: Make internet call here
+    }
+
+    private fun populateData(dogs: List<Dog>) {
+        adapter.submitList(dogs)
+    }
+
+    private fun showError(message: String) {
+        Snackbar.make(binding.rvAnimals, message, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {
