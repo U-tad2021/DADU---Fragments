@@ -14,7 +14,10 @@ class DogListFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private val adapter = DogAdapter()
+    private val adapter = DogAdapter {
+        navigateToDetailNavController(it.id)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
