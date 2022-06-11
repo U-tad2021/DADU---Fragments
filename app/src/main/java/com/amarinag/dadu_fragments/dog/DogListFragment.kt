@@ -32,10 +32,11 @@ class DogListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvAnimals.adapter = adapter
         binding.rvAnimals.layoutManager = LinearLayoutManager(context)
+        doRequest()
     }
 
 
-    private fun doRequest(animalId: String) {
+    private fun doRequest() {
         // TODO: Make internet call here
     }
 
