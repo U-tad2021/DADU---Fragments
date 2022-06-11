@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.amarinag.dadu_fragments.databinding.ItemDogBinding
 
 class DogAdapter(private val onAnimalClick: (Dog) -> Unit) :
@@ -21,6 +22,7 @@ class DogAdapter(private val onAnimalClick: (Dog) -> Unit) :
         holder.binding.tvAnimalName.text = animal.name
         holder.binding.tvBreed.text = animal.breedName
         holder.itemView.setOnClickListener { onAnimalClick(animal) }
+        holder.binding.ivAvatar.load(animal.imageUrl)
     }
 
     inner class DogViewHolder(val binding: ItemDogBinding) : RecyclerView.ViewHolder(binding.root)
