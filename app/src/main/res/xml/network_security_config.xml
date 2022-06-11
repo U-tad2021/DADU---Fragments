@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="tru">
-        <domain includeSubdomains="true">serveranimalutad-env.eba-zr9dsz3t.eu-west-3.elasticbeanstalk.com/</domain>
+        <domain includeSubdomains="true">serveranimalutad-env.eba-zr9dsz3t.eu-west-3.elasticbeanstalk.com</domain>
     </domain-config>
 </network-security-config>
